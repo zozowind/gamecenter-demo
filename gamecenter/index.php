@@ -7,7 +7,7 @@
     <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript">
-        var app_id = '<?php $_GET['app'];?>';
+        var app_id = '<?php echo $_GET['app'];?>';
     </script>
     <style type="text/css">
     	body {

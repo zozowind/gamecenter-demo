@@ -57,13 +57,15 @@ var login = function(app_user, center_user){
         data: {"app":app_id, "app_user": app_user, "center_user": center_user},
         dataType : "json",
         success : function(data){
-            console.log(data);
-            if(app_user == ''){
+            if(data.message == 'success'){
                 document.cookie = 'center_user='+data.center_user;
+                if(app_user != ''){
+                    document.cookie = 'app_user='+app_user;
+                }
+                showCenter(data);
             }else{
-                document.cookie = 'app_user='+app_user+'&center_user='+data.center_user;
+                alert(data.message);
             }
-            showCenter(data);
         },
         error:function(){
             alert('认证出现错误');

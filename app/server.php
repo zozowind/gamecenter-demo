@@ -1,10 +1,7 @@
 <?php
     session_start();
-    //连接Redis
-    $redis = new Redis();
-    $redis->connect('127.0.0.1',6379);
-    $key = 'app_user|';
-
+    //连接数据库
+    $mysqli = new mysqli('222.73.184.169', 'chenzhijie', 'chenzhijie', 'demo', '63306');
     switch ($_GET['action']) {
         //注册新账户并登录
         case 'register':
@@ -16,14 +13,20 @@
                     $_SESSION['error'] = '用户名为空';
                 }else{
                     //检查用户名是否被注册
-                    if($redis->get($key.$_POST['username'])===false){
-                        $info = array();
-                        $redis->set($key.$_POST['username'],json_encode($info));
-                        $_SESSION['username'] = $_POST['username'];
-                        $_SESSION['info'] = $info;
-                        $_SESSION['message'] = '登录成功';
+                    $rs = $mysqli->query("SELECT * FROM app_user WHERE username = '".$_POST['username']."'");
+                    if($rs){
+                        if($rs->num_rows > 0){
+                            $_SESSION['error'] = '用户: '.$_POST['username'].'已经存在';
+                        }else{
+                            $info = array();
+                            $mysqli->query("INSERT INTO app_user (username, info) VALUES ('".$_POST['username']."','".json_encode($info)."')");
+                            $_SESSION['username'] = $_POST['username'];
+                            $_SESSION['info'] = $info;
+                            $_SESSION['message'] = '登录成功';
+                        }
+
                     }else{
-                        $_SESSION['error'] = '用户: '.$_POST['username'].'已经存在';
+                        $_SESSION['error'] = '数据库连接查询不正确';
                     }
                 }
             }
@@ -32,13 +35,18 @@
         case 'login':
             //检查是否登录
             if(!isset($_SESSION['username'])){
-                $info = $redis->get($key.$_POST['username']);
-                if($info === false){
-                    $_SESSION['error'] = '用户:'.$_POST['username'].'不存在';
+                $rs = $mysqli->query("SELECT * FROM app_user WHERE username = '".$_POST['username']."'");
+                if($rs){
+                    if($rs->num_rows > 0){
+                        $user = $rs->fetch_assoc();
+                        $_SESSION['username'] = $_POST['username'];
+                        $_SESSION['info'] = json_decode($user['info'],true);
+                        $_SESSION['message'] = '登录成功';
+                    }else{
+                        $_SESSION['error'] = '用户:'.$_POST['username'].'不存在';
+                    }
                 }else{
-                    $_SESSION['username'] = $_POST['username'];
-                    $_SESSION['info'] = json_decode($info,true);
-                    $_SESSION['message'] = '登录成功';
+                    $_SESSION['error'] = '数据库连接查询不正确';
                 }
             }
             break;
@@ -61,6 +69,7 @@
             }
             $callback = $_GET['callback'];
             echo $callback.'('.json_encode($data).')';
+            $mysqli->close();
             exit;
             break;
 
@@ -68,5 +77,6 @@
             # code...
             break;
     }
+    $mysqli->close();
     header('Location:index.php');
     exit;
