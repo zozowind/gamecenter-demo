@@ -41,6 +41,6 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" src="js/sdk.js"></script>
+<script type="text/javascript" src="js/preload.js"></script>
 </body>
 </html>

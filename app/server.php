@@ -23,7 +23,15 @@
             break;
 
         case 'checkTicket':         //校验用户的Ticket
-            echo checkTicket($data);
+            $data = json_decode($_POST['ticketPackage']);
+            if($data){
+                echo checkTicket($data);
+            }else{
+                echo json_encode($result = array(
+                    'error' => '-3',
+                    'message' => 'Ticket包格式不正确'
+                ));
+            }
             exit;
             break;
 
@@ -109,7 +117,7 @@
             if($user === false){
                 $result = array(
                     'error' => '-1',
-                    'message' => '签名校验失败'
+                    'message' => '用户不存在'
                 );
             }else{
                 $result = array(
@@ -121,7 +129,7 @@
 
         }else{
             $result = array(
-                'error' => '-1',
+                'error' => '-2',
                 'message' => '签名校验失败'
             );
         }
