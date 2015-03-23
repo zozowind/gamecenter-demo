@@ -1,82 +1,62 @@
 <?php
     session_start();
-    //连接数据库
-    $mysqli = new mysqli('222.73.184.169', 'chenzhijie', 'chenzhijie', 'demo', '63306');
-    switch ($_GET['action']) {
-        //注册新账户并登录
-        case 'register':
-            //检查是否登录
-            if(isset($_SESSION['username'])){
-                $_SESSION['error'] = '用户: '.$_SESSION['username'].'已经登录';
-            }else{
-                if(trim($_POST['username'])==''){
-                    $_SESSION['error'] = '用户名为空';
-                }else{
-                    //检查用户名是否被注册
-                    $rs = $mysqli->query("SELECT * FROM app_user WHERE username = '".$_POST['username']."'");
-                    if($rs){
-                        if($rs->num_rows > 0){
-                            $_SESSION['error'] = '用户: '.$_POST['username'].'已经存在';
-                        }else{
-                            $info = array();
-                            $mysqli->query("INSERT INTO app_user (username, info) VALUES ('".$_POST['username']."','".json_encode($info)."')");
-                            $_SESSION['username'] = $_POST['username'];
-                            $_SESSION['info'] = $info;
-                            $_SESSION['message'] = '登录成功';
-                        }
-
-                    }else{
-                        $_SESSION['error'] = '数据库连接查询不正确';
-                    }
-                }
-            }
+    switch ($_GET['action']) {      //模拟路由
+        case 'login':               //用户登录
+            login();
             break;
 
-        case 'login':
-            //检查是否登录
-            if(!isset($_SESSION['username'])){
-                $rs = $mysqli->query("SELECT * FROM app_user WHERE username = '".$_POST['username']."'");
-                if($rs){
-                    if($rs->num_rows > 0){
-                        $user = $rs->fetch_assoc();
-                        $_SESSION['username'] = $_POST['username'];
-                        $_SESSION['info'] = json_decode($user['info'],true);
-                        $_SESSION['message'] = '登录成功';
-                    }else{
-                        $_SESSION['error'] = '用户:'.$_POST['username'].'不存在';
-                    }
-                }else{
-                    $_SESSION['error'] = '数据库连接查询不正确';
-                }
-            }
+        case 'logout':              //用户登出
+            logout();
             break;
 
-        case 'logout':
-            unset($_SESSION['userid']);
-            unset($_SESSION['username']);
-            $_SESSION['message'] = '退出成功';
-            break;
-
-        case 'getUser':
-            //登录情况
-            if(isset($_SESSION['username'])){
-                $data = array(
-                    'app_user' => $_SESSION['username']
-                );
-            //不登录情况
-            }else{
-                $data = array();
-            }
-            $callback = $_GET['callback'];
-            echo $callback.'('.json_encode($data).')';
-            $mysqli->close();
+        case 'getUser':             //获取当前用户
+            getUser();
             exit;
             break;
 
         default:
-            # code...
             break;
     }
-    $mysqli->close();
     header('Location:index.php');
     exit;
+
+    /**
+     * 用户登录模拟
+     *
+     * 使用Session记录用户登录状态，并用此来判断用户是否登录
+     */
+    function login()
+    {
+        //检查是否登录
+        if(!isset($_SESSION['username'])){
+            $_SESSION['username'] = $_POST['username'];
+            $_SESSION['info'] = array();
+            $_SESSION['message'] = '登录成功';
+        }
+    }
+
+    /**
+     * 用户登出模拟
+     *
+     * 登出时清除用户Session
+     */
+    function logout()
+    {
+        unset($_SESSION['userid']);
+        unset($_SESSION['username']);
+        $_SESSION['message'] = '退出成功';
+    }
+
+    /**
+     * 获取当前用户模拟
+     *
+     * 此功能是WEB网页来模拟原生APP时使用，原生APP中此功能由SDK实现
+     * preload.js通过调用获取当前用户接口，使用jsonp来进行调用
+     */
+    function getUser()
+    {
+        //获取用户数据
+        $data = isset($_SESSION['username'])?array('app_user' => $_SESSION['username']):array();
+        $callback = $_GET['callback'];
+        echo $callback.'('.json_encode($data).')';
+    }
