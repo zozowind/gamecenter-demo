@@ -34,7 +34,8 @@ switch ($_GET['action']) {
     case 'getGold':
         $rs = $mysqli->query("SELECT * FROM game_user WHERE username = '".$_SESSION['username']."'");
         if($rs->num_rows > 0){
-            $gold = $rs->fetch_assoc()['gold'] + rand(0,10);
+            $rsArr = $rs->fetch_assoc();
+            $gold = $rsArr['gold'] + rand(0,10);
             $mysqli->query("UPDATE game_user SET gold = ".$gold." WHERE username = '".$_SESSION['username']."'");
             echo json_encode(array('message'=>'success','gold'=>$gold));
         }else{
