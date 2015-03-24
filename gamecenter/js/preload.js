@@ -87,9 +87,9 @@ var login = function(data, accessToken){
         data: {"ticketPackage": data, "accessToken": accessToken},
         dataType : "json",
         success : function(data){
-            if(data.error == 0){
-                setAccessToken(data.accessToken);
-                showCenter(data);
+            if(data.code == 0){
+                setAccessToken(data.data.accessToken);
+                showCenter(data.data.page);
             }else{
                 alert(data.message);
             }

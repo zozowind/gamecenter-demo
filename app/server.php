@@ -28,7 +28,7 @@
                 echo checkTicket($data);
             }else{
                 echo json_encode($result = array(
-                    'error' => '-3',
+                    'code' => '-3',
                     'message' => 'Ticket包格式不正确'
                 ));
             }
@@ -95,11 +95,12 @@
         $signature = sha1(json_encode($data).SECRET_KEY);
         $data['signature'] = $signature;
 
-        return json_encode(array(
-            'error' => 0,
-            'message' => '成功',
-            'data' => $data
-        ));
+        $callback = $_GET['callback'];
+        echo $callback.'('.json_encode(array(
+                'code' => 0,
+                'message' => '成功',
+                'data' => $data
+            )).')';
     }
 
     /**
@@ -116,12 +117,12 @@
             $user = getUserFromTicket($data['ticket']);
             if($user === false){
                 $result = array(
-                    'error' => '-1',
+                    'code' => '-1',
                     'message' => '用户不存在'
                 );
             }else{
                 $result = array(
-                    'error' => '0',
+                    'code' => '0',
                     'message' => '成功',
                     'app_user_id' => md5($user['username']),
                 );
@@ -129,7 +130,7 @@
 
         }else{
             $result = array(
-                'error' => '-2',
+                'code' => '-2',
                 'message' => '签名校验失败'
             );
         }
