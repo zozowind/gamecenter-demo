@@ -23,6 +23,8 @@
             break;
 
         case 'checkTicket':         //校验用户的Ticket
+            echo checkTicket($_GET['ticket']);
+            /*
             $data = json_decode($_POST['ticketPackage']);
             if($data){
                 echo checkTicket($data);
@@ -32,6 +34,7 @@
                     'message' => 'Ticket包格式不正确'
                 ));
             }
+            */
             exit;
             break;
 
@@ -87,9 +90,9 @@
             $mysqli = new mysqli('222.73.184.169', 'chenzhijie', 'chenzhijie', 'demo', '63306');
             $mysqli->query("Update app_user SET ticket = '" . $ticket . "' WHERE username = '" . $_SESSION['username'] . "'");
             $mysqli->close();
-            $data['userType'] = 'real';
+            $data['user_type'] = 'real';
         } else {
-            $data['userType'] = 'temp';
+            $data['user_type'] = 'temp';
         }
         ksort($data);
         $signature = sha1(json_encode($data) . SECRET_KEY);
@@ -111,6 +114,20 @@
      */
     function checkTicket($data)
     {
+        $user = getUserFromTicket($data);
+        if ($user === false) {
+            $result = array(
+                'code' => '-1',
+                'message' => '用户不存在'
+            );
+        } else {
+            $result = array(
+                'code' => '0',
+                'message' => '成功',
+                'app_user_id' => md5($user['username']),
+            );
+        }
+        /*
         $signature = $data['signature'];
         unset($data['signature']);
         ksort($data);
@@ -135,7 +152,7 @@
                 'message' => '签名校验失败'
             );
         }
-
+        */
         return json_encode($result);
     }
 
@@ -150,7 +167,7 @@
         //这里根据实际情况实现通过$ticket获取用户ID的代码
         //最后输出可以是userId，username, 和user 具有一一对应关系的字符串
         $mysqli = new mysqli('222.73.184.169', 'chenzhijie', 'chenzhijie', 'demo', '63306');
-        $rs = $mysqli->query("SELECT *  FROM app_user WHERE username = '" . $_SESSION['username'] . "'");
+        $rs = $mysqli->query("SELECT *  FROM app_user WHERE ticket = '" . $ticket . "'");
         if ($rs->num_rows > 0) {
             $result = $rs->fetch_assoc();
         } else {
