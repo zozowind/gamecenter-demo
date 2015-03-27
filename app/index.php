@@ -59,7 +59,7 @@
                 </div>
             <?php } ?>
             <div class="block">
-                <a href="http://demo-gamecenter/index.php?app=ad1">进入游戏中心</a>
+                <a href="http://gamecenter/home/index">进入游戏中心</a>
             </div>
         </div>
     </div>

@@ -73,34 +73,34 @@
      *
      * 生成随机字符ticket
      */
-    function getTicket(){
+    function getTicket()
+    {
         //生成ticket
         $ticket = md5(uniqid(mt_rand(), true));
         $data = array(
-            'appkey_id' => APPKEY_ID,
+            'app_key' => APPKEY_ID,
             'timestamp' => time(),
             'ticket' => $ticket
         );
-        if(isset($_SESSION['username'])){
+        if (isset($_SESSION['username'])) {
             //保存ticket
             $mysqli = new mysqli('222.73.184.169', 'chenzhijie', 'chenzhijie', 'demo', '63306');
-            $mysqli->query("Update app_user SET ticket = '".$ticket."' WHERE username = '".$_SESSION['username']."'");
+            $mysqli->query("Update app_user SET ticket = '" . $ticket . "' WHERE username = '" . $_SESSION['username'] . "'");
             $mysqli->close();
             $data['userType'] = 'real';
-        }else{
+        } else {
             $data['userType'] = 'temp';
         }
-
         ksort($data);
-        $signature = sha1(json_encode($data).SECRET_KEY);
+        $signature = sha1(json_encode($data) . SECRET_KEY);
         $data['signature'] = $signature;
 
         $callback = $_GET['callback'];
-        echo $callback.'('.json_encode(array(
+        echo $callback . '(' . json_encode(array(
                 'code' => 0,
                 'message' => '成功',
                 'data' => $data
-            )).')';
+            )) . ')';
     }
 
     /**
@@ -109,18 +109,19 @@
      * @param $data
      * @return string
      */
-    function checkTicket($data){
+    function checkTicket($data)
+    {
         $signature = $data['signature'];
         unset($data['signature']);
         ksort($data);
-        if($signature == sha1(json_encode($data).SECRET_KEY)){
+        if ($signature == sha1(json_encode($data) . SECRET_KEY)) {
             $user = getUserFromTicket($data['ticket']);
-            if($user === false){
+            if ($user === false) {
                 $result = array(
                     'code' => '-1',
                     'message' => '用户不存在'
                 );
-            }else{
+            } else {
                 $result = array(
                     'code' => '0',
                     'message' => '成功',
@@ -128,7 +129,7 @@
                 );
             }
 
-        }else{
+        } else {
             $result = array(
                 'code' => '-2',
                 'message' => '签名校验失败'
@@ -144,14 +145,15 @@
      * @param $ticket
      * @return string
      */
-    function getUserFromTicket($ticket){
+    function getUserFromTicket($ticket)
+    {
         //这里根据实际情况实现通过$ticket获取用户ID的代码
         //最后输出可以是userId，username, 和user 具有一一对应关系的字符串
         $mysqli = new mysqli('222.73.184.169', 'chenzhijie', 'chenzhijie', 'demo', '63306');
-        $rs = $mysqli->query("SELECT *  FROM app_user WHERE username = '".$_SESSION['username']."'");
-        if($rs->num_rows > 0){
+        $rs = $mysqli->query("SELECT *  FROM app_user WHERE username = '" . $_SESSION['username'] . "'");
+        if ($rs->num_rows > 0) {
             $result = $rs->fetch_assoc();
-        }else{
+        } else {
             $result = false;
         }
         $mysqli->close();
