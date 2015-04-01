@@ -74,7 +74,7 @@
 <script type="text/javascript" src="js/hgame-sdk.js"></script>
 <script type="text/javascript">
     var hGame = new hGame({
-        "app_key": 'demo-game-1'
+        "game_key": 'demo-game-1'
     });
 	$(function(){
 		var startBtn = $('#start');
@@ -113,7 +113,7 @@
 		});
 
         shareBtn.on('touchend', function(){
-            hGame.scoreReport(gold);
+
         });
 
         reportBtn.on('touchend', function(){

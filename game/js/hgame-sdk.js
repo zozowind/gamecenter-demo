@@ -1,7 +1,8 @@
 (function(window,document,Math){
     //hGame 初始化
     var hGame = function(config){
-        this.app_key = config.app_key;
+        this.game_key = config.game_key;
+        this.hGameDomain = 'http://gamecenter';
     };
     //定义h5center的接口
     hGame.prototype = {
@@ -14,21 +15,28 @@
             this.afterPay = afterPay;
         },
         shareCallback: function(){
-            this.afterShare();
+            alert('分享回调');
         },
         payCallback: function(){
-            this.afterPay();
+            alert('支付回调');
         },
         scoreReport: function(score){
-            alert(score);
-            alert(this.app_key);
+            var message = {
+                "action": 'scoreReport',
+                "data": {
+                    "game_key": this.game_key,
+                    "score": score
+                }
+            };
+            sendMessage(message, this.hGameDomain);
         }
     };
 
-    var sendMessage = function(message){
+    var sendMessage = function(message, hGameDomain){
         var iframe = window.parent;
         if(typeof iframe != undefined){
-            iframe.postMessage(message, url);
+            console.log(message);
+            iframe.postMessage(message, hGameDomain);
         }else{
             //报错
             alert('没有找到父窗口');
@@ -36,6 +44,8 @@
     };
 
     var messageHandler = function(messagee){
+        alert(message.action);
+        return;
         var data = JSON.parse(message);
         if(typeof data == 'object'){
             switch(data.action){
