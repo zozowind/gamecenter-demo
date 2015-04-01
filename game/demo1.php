@@ -55,46 +55,51 @@
     <div class="row">
         <div id="play-page" class="col-xs-12 main">
             <div id="title">不需要登录游戏Demo</div>
-			<div id="description">点击开始游戏后，点击获取金币，可以随机获取0-10个金币，超过100个后游戏结束</div>
+			<div id="description">点击开始游戏后，点击获取金币，可以随机获取0-10000分数，游戏结束</div>
 			<div id="info">
-				<div>我的金币数: <span id="gold">0</span></div>
+				<div>我的分数: <span id="gold">0</span></div>
 			</div>
             <div class="controls">
                 <button id="start">开始游戏</button>
-                <button id="get">获取金币</button>
+                <button id="get">获取分数</button>
                 <button id="end">重新开始</button>
             </div>
 			<div class="controls">
-                <button id="logout" onclick="history.go(-1);">返回游戏中心</button>
+                <button id="share" style="display: none">分享游戏</button>
+                <button id="report" style="display: none">上报成绩</button>
 			</div>
         </div>
     </div>
 </div>
+<script type="text/javascript" src="js/hgame-sdk.js"></script>
 <script type="text/javascript">
+    var hGame = new hGame({
+        "app_key": 'demo-game-1'
+    });
 	$(function(){
 		var startBtn = $('#start');
 		var getBtn = $('#get');
 		var endBtn = $('#end');
-		var myGold = parseInt($('#gold').text());
+        var shareBtn = $('#share');
+        var reportBtn = $('#report');
+		var gold = parseInt($('#gold').text());
+
 		startBtn.on('touchend', function(){
+            $('#gold').text('0');
 			startBtn.hide();
 			getBtn.show();
 			endBtn.show();
+            shareBtn.hide();
+            reportBtn.hide();
 		});
 
 		getBtn.on('touchend', function(){
-			var gold = Math.round(Math.random()*10);
-			myGold = myGold + gold;
-			if(myGold > 100){
-				alert('金币超过100，Game Over');
-				myGold = 0;
-				$('#gold').text('0');
-				startBtn.show();
-				getBtn.hide();
-				endBtn.hide();
-			}else{
-				$('#gold').text(myGold);
-			}
+			gold = Math.round(Math.random()*10000);
+            $('#gold').text(gold);
+            getBtn.hide();
+            endBtn.show();
+            shareBtn.show();
+            reportBtn.show();
 		});
 
 		endBtn.on('touchend', function(){
@@ -103,7 +108,18 @@
 			startBtn.show();
 			getBtn.hide();
 			endBtn.hide();
+            shareBtn.hide();
+            reportBtn.hide();
 		});
+
+        shareBtn.on('touchend', function(){
+            hGame.scoreReport(gold);
+        });
+
+        reportBtn.on('touchend', function(){
+            hGame.scoreReport(gold);
+        });
+
 	});
 </script>
 </body>
