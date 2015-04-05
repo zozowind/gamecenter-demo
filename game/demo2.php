@@ -57,7 +57,7 @@
 	    	<?php if(isset($_SESSION['username'])){ ?>
 		    	<div id="play-page" class="col-xs-12 main">
 		            <div id="title">欢迎你，<?php echo substr($_SESSION['username'],0,7);?></div>
-					<div id="description">点击购买金币后，会购买金币，金币价格为10个/0.01RMB</div>
+					<div id="description">点击购买金币，金币价格为10个/0.01RMB</div>
 					<div id="info">
 						<div>我的金币数: <span id="gold"><?php echo $_SESSION['gold'];?></span></div>
 					</div>
