@@ -90,7 +90,7 @@
 
             //获取购买商品金币的签名
 			buyBtn.on('touchend', function(){
-                var itemId = this.attr('itemId');
+                var itemId = $(this).attr('itemId');
 				$.ajax({
 	                type: "POST",
 	                url: "server.php?action=buyGold",
