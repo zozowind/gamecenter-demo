@@ -98,7 +98,7 @@
 	                dataType: "json",
 	                success: function(data){
 	                    if(data.code == 0){
-                            console.log(data.data);
+                            hGame.pay(data.data.payInfo, data.data.payType);
 	                    }else{
 	                        alert(data.message);
 	                    }

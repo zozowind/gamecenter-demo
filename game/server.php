@@ -58,7 +58,7 @@ if(isset($_GET['action'])){
             if($rs->num_rows > 0){
                 $user = $rs->fetch_assoc();
             }else{
-                echo json_encode(array('code'=>'0','message'=>'用户不存在','data'=>$data));
+                echo json_encode(array('code'=>'0','message'=>'用户不存在'));
                 $mysqli->close();
                 exit;
             }
@@ -77,7 +77,8 @@ if(isset($_GET['action'])){
             $data['nonce'] = randString(10);
             $data['game_secret'] = 'demo-game-2-secret';
             $data = signTheData($data);
-            echo json_encode(array('code'=>'0','message'=>'success','data'=>$data));
+            //优先支付方式可以由客户端选择也可以由服务端指定
+            echo json_encode(array('code'=>'0','message'=>'success','data'=>array('payInfo'=>$data,'payType'=>'alipay_wap')));
             $mysqli->close();
             exit;
             break;

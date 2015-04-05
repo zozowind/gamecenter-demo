@@ -17,8 +17,14 @@
             sendMessage(message, this.hGameDomain);
         },
         //游戏内点击购买按钮
-        pay: function(data){
-
+        pay: function(payData, pay_name){
+            var message = {
+                "action": 'pay',
+                "data": {
+                    "payData": payData,
+                    "pay_name":pay_name
+                }
+            }
         },
         shareCallback: function(){
             alert('分享回调');
