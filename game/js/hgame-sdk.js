@@ -25,6 +25,7 @@
                     "pay_name":pay_name
                 }
             }
+            sendMessage(message, this.hGameDomain);
         },
         shareCallback: function(){
             alert('分享回调');

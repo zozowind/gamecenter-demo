@@ -84,10 +84,10 @@
 	</div>
     <script type="text/javascript" src="js/hgame-sdk.js"></script>
 	<script type="text/javascript">
+        var hGame = new hGame({
+            "game_key": 'demo-game-2'
+        });
 		$(function(){
-            var hGame = new hGame({
-                "game_key": 'demo-game-2'
-            });
 			var buyBtn = $('.buyBtn');
 			var logoutBtn = $('#logout');
 
