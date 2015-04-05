@@ -63,7 +63,7 @@
 					</div>
 					<div class="controls">
 						<button class="buyBtn" itemId="item001">买10个金币</button>
-                        <button class="buyBtn" itemId="item002">>买10个金币</button>
+                        <button class="buyBtn" itemId="item002">买20个金币</button>
 						<form action="server.php?action=logout" method="post">
 							<button type="submit" id="logout">返回游戏中心</button>
 						</form>
@@ -94,7 +94,7 @@
 				$.ajax({
 	                type: "POST",
 	                url: "server.php?action=buyGold",
-                    data: {"itemId": itemId}
+                    data: {"itemId": itemId},
 	                dataType: "json",
 	                success: function(data){
 	                    if(data.code == 0){
