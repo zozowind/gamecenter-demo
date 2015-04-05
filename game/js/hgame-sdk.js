@@ -7,8 +7,14 @@
     //定义h5center的接口
     hGame.prototype = {
         //游戏内点击分享按钮
-        share: function(options){
-
+        share: function(title){
+            var message = {
+                "action": 'share',
+                "data": {
+                    "title": title
+                }
+            };
+            sendMessage(message, this.hGameDomain);
         },
         //游戏内点击购买按钮
         pay: function(options){
@@ -35,7 +41,6 @@
     var sendMessage = function(message, hGameDomain){
         var iframe = window.parent;
         if(typeof iframe != undefined){
-            console.log(message);
             iframe.postMessage(message, hGameDomain);
         }else{
             //报错

@@ -113,7 +113,7 @@
 		});
 
         shareBtn.on('touchend', function(){
-
+            hGame.share('这里游戏可以自己定义分享的消息');
         });
 
         reportBtn.on('touchend', function(){
