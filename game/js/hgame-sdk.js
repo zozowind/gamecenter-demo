@@ -17,8 +17,8 @@
             sendMessage(message, this.hGameDomain);
         },
         //游戏内点击购买按钮
-        pay: function(options){
-            this.afterPay = afterPay;
+        pay: function(data){
+
         },
         shareCallback: function(){
             alert('分享回调');
@@ -40,7 +40,7 @@
 
     var sendMessage = function(message, hGameDomain){
         var iframe = window.parent;
-        if(typeof iframe != undefined){
+        if(typeof (iframe != undefined)){
             iframe.postMessage(message, hGameDomain);
         }else{
             //报错
@@ -48,7 +48,7 @@
         }
     };
 
-    var messageHandler = function(messagee){
+    var messageHandler = function(message){
         alert(message.action);
         return;
         var data = JSON.parse(message);

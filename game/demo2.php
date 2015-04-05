@@ -57,12 +57,13 @@
 	    	<?php if(isset($_SESSION['username'])){ ?>
 		    	<div id="play-page" class="col-xs-12 main">
 		            <div id="title">欢迎你，<?php echo substr($_SESSION['username'],0,7);?></div>
-					<div id="description">点击开始游戏后，点击获取金币，可以随机获取0-10个金币</div>
+					<div id="description">点击购买金币后，会购买金币，金币价格为10个/0.01RMB</div>
 					<div id="info">
 						<div>我的金币数: <span id="gold"><?php echo $_SESSION['gold'];?></span></div>
 					</div>
 					<div class="controls">
-						<button id="get">获取金币</button>
+						<button class="buyBtn" itemId="item001">买10个金币</button>
+                        <button class="buyBtn" itemId="item002">>买10个金币</button>
 						<form action="server.php?action=logout" method="post">
 							<button type="submit" id="logout">返回游戏中心</button>
 						</form>
@@ -81,19 +82,23 @@
 	    	<?php } ?>
 	    </div>
 	</div>
+    <script type="text/javascript" src="js/hgame-sdk.js"></script>
 	<script type="text/javascript">
 		$(function(){
-			var getBtn = $('#get');
+			var buyBtn = $('.buyBtn');
 			var logoutBtn = $('#logout');
 
-			getBtn.on('touchend', function(){
+            //获取购买商品金币的签名
+			buyBtn.on('touchend', function(){
+                var itemId = this.attr('itemId');
 				$.ajax({
 	                type: "POST",
-	                url: "server.php?action=getGold",
+	                url: "server.php?action=buyGold",
+                    data: {"itemId": itemId}
 	                dataType: "json",
 	                success: function(data){
-	                    if(data.message=="success"){
-	                        $('#gold').text(data.gold);
+	                    if(data.code == 0){
+                            console.log(data.data);
 	                    }else{
 	                        alert(data.message);
 	                    }
