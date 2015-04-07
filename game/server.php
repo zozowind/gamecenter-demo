@@ -107,10 +107,12 @@ if(isset($_GET['action'])){
                 'total_fee' => $_POST['total_fee'],
                 'signature' => $_POST['signature']
             );
-            if(!checkSign($data,'demo-game-2-secret')){
+            if(checkSign($data,'demo-game-2-secret')){
+                echo 'SUCCESS';
+            }else{
                 echo 'FAIL';
-                exit;
-            };
+            }
+            exit;
             break;
         default:
             break;
