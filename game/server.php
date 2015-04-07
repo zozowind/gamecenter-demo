@@ -22,6 +22,19 @@ function signTheData($data){
 
     return $data;
 }
+
+function checkSign($data, $secret){
+    $signature = $data['signature'];
+    unset($data['game_secret']);
+    $data['game_secret'] = $secret;
+    ksort($data);
+    foreach($data as $k=>$v){
+        $tmp[] = $k.'='.$v;
+    }
+    $str = implode('&',$tmp);
+    return sha1($str) == $signature;
+}
+
 $mysqli = new mysqli('222.73.184.169', 'chenzhijie', 'chenzhijie', 'demo', '63306');
 if(isset($_GET['ticket'])){
     //@ticket 登录后需要验证ticket
@@ -78,13 +91,26 @@ if(isset($_GET['action'])){
             $data['game_secret'] = 'demo-game-2-secret';
             $data = signTheData($data);
             $mysqli->query("INSERT INTO game_order (game_user_id, game_order, game_item, game_fee, status)
-            VALUES (".$user['id'].",'".$data['game_pay_order']."','".$_POST['itemId']."',".$item[$_POST['itemId']]['fee'].",0");
+            VALUES (".$user['id'].",'".$data['game_pay_order']."','".$_POST['itemId']."',".$item[$_POST['itemId']]['fee'].",0)");
             //优先支付方式可以由客户端选择也可以由服务端指定
             echo json_encode(array('code'=>'0','message'=>'success','data'=>array('payInfo'=>$data,'payType'=>'alipay_wap')));
             $mysqli->close();
             exit;
             break;
         case 'confirm':
+            //检查签名
+            $data = array(
+                'game_trade_no' => $_POST['game_trade_no'],
+                'tradeno' => $_POST['tradeno'],
+                'subject' => $_POST['subject'],
+                'description' => $_POST['description'],
+                'total_fee' => $_POST['total_fee'],
+                'signature' => $_POST['signature']
+            );
+            if(!checkSign($data,'demo-game-2-secret')){
+                echo 'FAIL';
+                exit;
+            };
             break;
         default:
             break;
