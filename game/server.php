@@ -110,9 +110,10 @@ if(isset($_GET['action'])){
             if(checkSign($data,'111111')){
                 $orderRs = $mysqli->query("SELECT * FROM game_order WHERE game_order = '".$data['game_trade_no']."' AND status = 0");
                 if($orderRs->num_rows > 0){
+                    $order = $orderRs->fetch_assoc();
                     $mysqli->query("UPDATE game_order SET status = 1 WHERE game_order = '".$data['game_trade_no']."'");
                     $gold =  $_POST['total_fee']*1000;
-                    $mysqli->query("UPDATE game_user SET gold = gold + ".$gold." WHERE id = ".$orderRs['game_user_id']);
+                    $mysqli->query("UPDATE game_user SET gold = gold + ".$gold." WHERE id = ".$order['game_user_id']);
                     echo 'SUCCESS';
                 }else{
                     echo 'FAIL';
