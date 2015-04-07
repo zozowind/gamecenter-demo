@@ -25,7 +25,7 @@ function signTheData($data){
 
 function checkSign($data, $secret){
     $signature = $data['signature'];
-    unset($data['game_secret']);
+    unset($data['signature']);
     $data['game_secret'] = $secret;
     ksort($data);
     foreach($data as $k=>$v){
@@ -88,7 +88,7 @@ if(isset($_GET['action'])){
             $data['timestamp'] = time();
             //生成随机数
             $data['nonce'] = randString(10);
-            $data['game_secret'] = 'demo-game-2-secret';
+            $data['game_secret'] = '111111';
             $data = signTheData($data);
             $mysqli->query("INSERT INTO game_order (game_user_id, game_order, game_item, game_fee, status)
             VALUES (".$user['id'].",'".$data['game_pay_order']."','".$_POST['itemId']."',".$item[$_POST['itemId']]['fee'].",0)");
@@ -107,8 +107,16 @@ if(isset($_GET['action'])){
                 'total_fee' => $_POST['total_fee'],
                 'signature' => $_POST['signature']
             );
-            if(checkSign($data,'demo-game-2-secret')){
-                echo 'SUCCESS';
+            if(checkSign($data,'111111')){
+                $orderRs = $mysqli->query("SELECT * FROM game_order WHERE game_order = '".$data['game_trade_no']."' AND status = 0");
+                if($orderRs->num_rows > 0){
+                    $mysqli->query("UPDATE game_order SET status = 1 WHERE game_order = '".$data['game_trade_no']."'");
+                    $gold =  $_POST['total_fee']*1000;
+                    $mysqli->query("UPDATE game_user SET gold = gold + ".$gold." WHERE game_order = '".$data['game_trade_no']."'");
+                    echo 'SUCCESS';
+                }else{
+                    echo 'FAIL';
+                }
             }else{
                 echo 'FAIL';
             }
