@@ -88,7 +88,7 @@ if(isset($_GET['action'])){
             $data['timestamp'] = time();
             //生成随机数
             $data['nonce'] = randString(10);
-            $data['game_secret'] = '111111';
+            $data['game_secret'] = 'demo-game-2-secret';
             $data = signTheData($data);
             $mysqli->query("INSERT INTO game_order (game_user_id, game_order, game_item, game_fee, status)
             VALUES (".$user['id'].",'".$data['game_pay_order']."','".$_POST['itemId']."',".$item[$_POST['itemId']]['fee'].",0)");
@@ -112,7 +112,7 @@ if(isset($_GET['action'])){
                 if($orderRs->num_rows > 0){
                     $mysqli->query("UPDATE game_order SET status = 1 WHERE game_order = '".$data['game_trade_no']."'");
                     $gold =  $_POST['total_fee']*1000;
-                    $mysqli->query("UPDATE game_user SET gold = gold + ".$gold." WHERE game_order = '".$data['game_trade_no']."'");
+                    $mysqli->query("UPDATE game_user SET gold = gold + ".$gold." WHERE id = ".$orderRs['game_user_id']);
                     echo 'SUCCESS';
                 }else{
                     echo 'FAIL';
