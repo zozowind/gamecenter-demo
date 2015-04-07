@@ -64,14 +64,14 @@ if(isset($_GET['action'])){
             //open_id由当前用户查询数据库获得
             //game_pay_fee和subject由itemId获得
             if(!isset($item[$_POST['itemId']])){
-                echo json_encode(array('code'=>'0','message'=>'商品'.$_POST['itemId'].'不存在'));
+                echo json_encode(array('code'=>'-1','message'=>'商品'.$_POST['itemId'].'不存在'));
                 exit;
             }
             $rs = $mysqli->query("SELECT * FROM game_user WHERE username = '".$_SESSION['username']."'");
             if($rs->num_rows > 0){
                 $user = $rs->fetch_assoc();
             }else{
-                echo json_encode(array('code'=>'0','message'=>'用户不存在'));
+                echo json_encode(array('code'=>'-2','message'=>'用户不存在'));
                 $mysqli->close();
                 exit;
             }
@@ -121,6 +121,17 @@ if(isset($_GET['action'])){
             }else{
                 echo 'FAIL';
             }
+            exit;
+            break;
+        case 'refresh':
+            $rs = $mysqli->query("SELECT * FROM game_user WHERE username = '".$_SESSION['username']."'");
+            if($rs->num_rows > 0){
+                $user = $rs->fetch_assoc();
+                echo json_encode(array('code'=>'0','message'=>'success','data'=>array('gold'=>$user['gold'])));
+            }else{
+                echo json_encode(array('code'=>'-1','message'=>'用户不存在'));
+            }
+            $mysqli->close();
             exit;
             break;
         default:

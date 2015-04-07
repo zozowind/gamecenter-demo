@@ -64,9 +64,7 @@
 					<div class="controls">
 						<button class="buyBtn" itemId="item001">买10个金币</button>
                         <button class="buyBtn" itemId="item002">买20个金币</button>
-						<form action="server.php?action=logout" method="post">
-							<button type="submit" id="logout">返回游戏中心</button>
-						</form>
+                        <button id="refresh">刷新金币记录</button>
 					</div>
 		        </div>
 	    	<?php } else { ?>
@@ -90,6 +88,7 @@
 		$(function(){
 			var buyBtn = $('.buyBtn');
 			var logoutBtn = $('#logout');
+            var refreshBtn = $('#refresh');
 
             //获取购买商品金币的签名
 			buyBtn.on('touchend', function(){
@@ -111,6 +110,24 @@
 	                }
             	});
 			});
+
+            refreshBtn.on('touchend', function(){
+                $.ajax({
+                    type: "POST",
+                    url: "server.php?action=refresh",
+                    dataType: "json",
+                    success: function(data){
+                        if(data.code == 0){
+                            $('#gold').text(data.data.gold);
+                        }else{
+                            alert(data.message);
+                        }
+                    },
+                    error: function(data){
+                        alert("获取金币失败");
+                    }
+                });
+            });
 		});
 	</script>
 </body>
