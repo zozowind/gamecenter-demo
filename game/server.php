@@ -107,7 +107,7 @@ if(isset($_GET['action'])){
                 'total_fee' => $_POST['total_fee'],
                 'signature' => $_POST['signature']
             );
-            if(checkSign($data,'111111')){
+            if(checkSign($data,'demo-game-2-secret')){
                 $orderRs = $mysqli->query("SELECT * FROM game_order WHERE game_order = '".$data['game_trade_no']."' AND status = 0");
                 if($orderRs->num_rows > 0){
                     $order = $orderRs->fetch_assoc();
