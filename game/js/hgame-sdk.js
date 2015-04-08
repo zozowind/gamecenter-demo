@@ -102,13 +102,13 @@
         if(typeof message == 'object'){
             switch(message.action){
                 case 'share':
-                    hGame.shareCallback(message.data);
+                    hGame.shareCallback(message.content);
                     break;
                 case 'pay':
-                    hGame.payCallback(message.data);
+                    hGame.payCallback(message.content);
                     break;
                 case 'scoreReport':
-                    hGame.scoreReportCallback(message.data);
+                    hGame.scoreReportCallback(message.content);
                     break;
                 default:
                     break;

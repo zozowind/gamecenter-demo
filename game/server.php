@@ -11,27 +11,24 @@ function randString($n){
     return $str;
 }
 
-function signTheData($data){
+function signTheData($data, $secret){
     ksort($data);
     foreach($data as $k=>$v){
         $tmp[] = $k.'='.$v;
     }
-    $str = implode('&',$tmp);
-    unset($data['game_secret']);
+    $str = implode('&',$tmp).$secret;
     $data['signature'] = sha1($str);
-
     return $data;
 }
 
 function checkSign($data, $secret){
     $signature = $data['signature'];
     unset($data['signature']);
-    $data['game_secret'] = $secret;
     ksort($data);
     foreach($data as $k=>$v){
         $tmp[] = $k.'='.$v;
     }
-    $str = implode('&',$tmp);
+    $str = implode('&',$tmp).$secret;
     return sha1($str) == $signature;
 }
 
@@ -88,8 +85,7 @@ if(isset($_GET['action'])){
             $data['timestamp'] = time();
             //生成随机数
             $data['nonce'] = randString(10);
-            $data['game_secret'] = 'demo-game-2-secret';
-            $data = signTheData($data);
+            $data = signTheData($data, 'demo-game-2-secret');
             $mysqli->query("INSERT INTO game_order (game_user_id, game_order, game_item, game_fee, status)
             VALUES (".$user['id'].",'".$data['game_pay_order']."','".$_POST['itemId']."',".$item[$_POST['itemId']]['fee'].",0)");
             //优先支付方式可以由客户端选择也可以由服务端指定
@@ -100,18 +96,18 @@ if(isset($_GET['action'])){
         case 'confirm':
             //检查签名
             $data = array(
-                'game_trade_no' => $_POST['game_trade_no'],
-                'tradeno' => $_POST['tradeno'],
+                'game_order_no' => $_POST['game_order_no'],
+                'orderno' => $_POST['orderno'],
                 'subject' => $_POST['subject'],
                 'description' => $_POST['description'],
                 'total_fee' => $_POST['total_fee'],
                 'signature' => $_POST['signature']
             );
             if(checkSign($data,'demo-game-2-secret')){
-                $orderRs = $mysqli->query("SELECT * FROM game_order WHERE game_order = '".$data['game_trade_no']."' AND status = 0");
+                $orderRs = $mysqli->query("SELECT * FROM game_order WHERE game_order = '".$data['game_order_no']."' AND status = 0");
                 if($orderRs->num_rows > 0){
                     $order = $orderRs->fetch_assoc();
-                    $mysqli->query("UPDATE game_order SET status = 1 WHERE game_order = '".$data['game_trade_no']."'");
+                    $mysqli->query("UPDATE game_order SET status = 1 WHERE game_order = '".$data['game_order_no']."'");
                     $gold =  $_POST['total_fee']*1000;
                     $mysqli->query("UPDATE game_user SET gold = gold + ".$gold." WHERE id = ".$order['game_user_id']);
                     echo 'SUCCESS';
