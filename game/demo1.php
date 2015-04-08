@@ -74,8 +74,19 @@
 <script type="text/javascript" src="js/hgame-sdk.js"></script>
 <script type="text/javascript">
     var hGame = new hGame({
-        "game_key": 'demo-game-1'
+        "game_key": 'demo-game-1',
+        "afterShare": function(data){
+            alert(data.code);
+        },
+        "afterPay": function(data){
+            alert(data.code);
+        },
+        "afterScoreReport": function(data){
+            alert(data.code);
+        }
     });
+
+
 	$(function(){
 		var startBtn = $('#start');
 		var getBtn = $('#get');
