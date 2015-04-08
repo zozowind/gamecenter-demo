@@ -59,7 +59,7 @@
                 </div>
             <?php } ?>
             <div class="block">
-                <a href="http://gamecenter/home/index">进入游戏中心</a>
+                <a href="http://dev1.h5.gamexhb.com/home/index">进入游戏中心</a>
             </div>
         </div>
     </div>
