@@ -79,7 +79,7 @@ if(isset($_GET['action'])){
                 "game_pay_order" => 'order_'.time(),
                 "game_pay_subject"   => $item[$_POST['itemId']]['subject'],
                 "game_pay_body"      => $item[$_POST['itemId']]['body'],
-                "notify_url"=> ''
+                "notify_url"=> 'http://gamedemo.dev.gamexhb.com/server.php?action=confirm'
             );
             //添加时间戳
             $data['timestamp'] = time();
