@@ -74,16 +74,7 @@
 <script type="text/javascript" src="js/hgame-sdk.js"></script>
 <script type="text/javascript">
     var hGame = new hGame({
-        "game_key": 'demo-game-1',
-        "afterShare": function(data){
-            alert(data.code);
-        },
-        "afterPay": function(data){
-            alert(data.code);
-        },
-        "afterScoreReport": function(data){
-            alert(data.code);
-        }
+        "game_key": 'demo-game-1'
     });
 
 
@@ -124,7 +115,9 @@
 		});
 
         shareBtn.on('touchend', function(){
-            hGame.share('这里游戏可以自己定义分享的消息');
+            hGame.share('这里游戏可以自己定义分享的消息', function(result){
+                alert(result.code);
+            });
         });
 
         reportBtn.on('touchend', function(){
