@@ -87,7 +87,7 @@ if(isset($_GET['action'])){
             $data['nonce'] = randString(10);
             $data = signTheData($data, 'demo-game-2-secret');
             $mysqli->query("INSERT INTO game_order (game_user_id, game_order, game_item, game_fee, status)
-            VALUES (".$user['id'].",'".$data['game_pay_order']."','".$_POST['itemId']."',".$item[$_POST['itemId']]['fee'].",0)");
+            VALUES (".$user['id'].",'".$data['game_orderno']."','".$_POST['itemId']."',".$item[$_POST['itemId']]['fee'].",0)");
             //优先支付方式可以由客户端选择也可以由服务端指定
             echo json_encode(array('code'=>'0','message'=>'success','data'=>array('payInfo'=>$data,'payType'=>'alipay_wap')));
             $mysqli->close();
