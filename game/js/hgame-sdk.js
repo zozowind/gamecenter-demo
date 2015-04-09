@@ -9,6 +9,10 @@
         this.afterShare = config.afterShare;
         this.afterPay = config.afterPay;
         this.afterScoreReport = config.afterScoreReport;
+        //添加消息监听
+        window.addEventListener('message', function(event){
+            this.messageHandler(event.data);
+        }, false)
     };
 
     /**
@@ -27,7 +31,7 @@
                     "title": title
                 }
             };
-            sendMessage(message, this.hGameDomain);
+            this.sendMessage(message, this.hGameDomain);
         },
 
         /**
@@ -43,7 +47,7 @@
                     "pay_name":pay_name
                 }
             };
-            sendMessage(message, this.hGameDomain);
+            this.sendMessage(message, this.hGameDomain);
         },
 
         /**
@@ -58,77 +62,77 @@
                     "score": score
                 }
             };
-            sendMessage(message, this.hGameDomain);
-        }
-    };
+            this.sendMessage(message, this.hGameDomain);
+        },
 
-    /**
-     * 消息发送方法
-     * @param message 消息体
-     * @param hGameDomain 发送对象域名
-     */
-    var sendMessage = function(message, hGameDomain){
-        var iframe = window.parent;
-        if(typeof (iframe != undefined)){
-            iframe.postMessage(message, hGameDomain);
-        }else{
-            //报错
-            alert('没有找到父窗口');
-        }
-    };
-
-    /**
-     * 消息接受后执行
-     * @param message 消息体
-     */
-    var messageHandler = function(message){
-        if(typeof message == 'object'){
-            switch(message.action){
-                case 'share':
-                    shareCallback(message.content);
-                    break;
-                case 'pay':
-                    payCallback(message.content);
-                    break;
-                case 'scoreReport':
-                    scoreReportCallback(message.content);
-                    break;
-                default:
-                    break;
+        /**
+         * 消息发送方法
+         * @param message 消息体
+         * @param hGameDomain 发送对象域名
+         */
+        sendMessage: function(message, hGameDomain){
+            var iframe = window.parent;
+            if(typeof (iframe != undefined)){
+                iframe.postMessage(message, hGameDomain);
+            }else{
+                //报错
+                alert('没有找到父窗口');
             }
-        }else{
-            //报错
-            alert('消息体格式不正确');
+        },
+
+        /**
+         * 消息接受后执行
+         * @param message 消息体
+         */
+        messageHandler: function(message){
+            if(typeof message == 'object'){
+                switch(message.action){
+                    case 'share':
+                        this.shareCallback(message.content);
+                        break;
+                    case 'pay':
+                        this.payCallback(message.content);
+                        break;
+                    case 'scoreReport':
+                        this.scoreReportCallback(message.content);
+                        break;
+                    default:
+                        break;
+                }
+            }else{
+                //报错
+                alert('消息体格式不正确');
+            }
+        },
+
+        /**
+         * 游戏内分享完成后的回调接口
+         */
+        shareCallback: function(data){
+            this.afterShare(data);
+        },
+
+
+        /**
+         * 游戏内支付完成后的回调接口
+         */
+        payCallback: function(data){
+            this.afterPay(data);
+        },
+
+        /**
+         * 游戏内上报
+         * @param data
+         */
+        scoreReportCallback: function(data){
+            this.afterScoreReport(data);
         }
     };
 
-    /**
-     * 游戏内分享完成后的回调接口
-     */
-    var shareCallback = function(data){
-        hGame.afterShare(data);
-    };
 
-
-    /**
-     * 游戏内支付完成后的回调接口
-     */
-    var payCallback = function(data){
-        hGame..afterPay(data);
-    };
-
-    /**
-     * 游戏内上报
-     * @param data
-     */
-    var scoreReportCallback = function(data){
-        this.afterScoreReport(data);
-    };
-
-    //添加消息监听
-    window.addEventListener('message', function(event){
-        messageHandler(event.data);
-    }, false)
-
-    window.hGame = hGame;
+    if ( typeof module != 'undefined' && module.exports ) {
+        module.exports = hGame;
+    } else {
+        window.hGame = hGame;
+    }
 })(window,document,Math);
