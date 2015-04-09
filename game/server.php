@@ -75,10 +75,10 @@ if(isset($_GET['action'])){
             $data = array(
                 "game_key"  =>'demo-game-2',
                 "open_id"   =>$user['center_user'],
-                "game_pay_fee" => $item[$_POST['itemId']]['fee'],
-                "game_pay_order" => 'order_'.time(),
-                "game_pay_subject"   => $item[$_POST['itemId']]['subject'],
-                "game_pay_body"      => $item[$_POST['itemId']]['body'],
+                "total_fee" => $item[$_POST['itemId']]['fee'],
+                "game_orderno" => 'order_'.time(),
+                "subject"   => $item[$_POST['itemId']]['subject'],
+                "description"      => $item[$_POST['itemId']]['body'],
                 "notify_url"=> 'http://gamedemo.dev.gamexhb.com/server.php?action=confirm'
             );
             //添加时间戳
