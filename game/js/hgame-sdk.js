@@ -4,6 +4,7 @@
      * @param config 初始化参数, 包括game_key
      */
     var hGame = function(config){
+        var _self = this;
         this.game_key = config.game_key;
         this.hGameDomain = 'http://dev1.h5.gamexhb.com';  //填写实际的游戏服务器地址
         this.afterShare = config.afterShare;
@@ -11,7 +12,7 @@
         this.afterScoreReport = config.afterScoreReport;
         //添加消息监听
         window.addEventListener('message', function(event){
-            this.messageHandler(event.data);
+            _self.messageHandler(event.data);
         }, false)
     };
 
