@@ -96,7 +96,7 @@ if(isset($_GET['action'])){
         case 'confirm':
             //检查签名
             $data = array(
-                'game_order_no' => $_POST['game_order_no'],
+                'game_orderno' => $_POST['game_orderno'],
                 'orderno' => $_POST['orderno'],
                 'subject' => $_POST['subject'],
                 'description' => $_POST['description'],
@@ -104,10 +104,10 @@ if(isset($_GET['action'])){
                 'signature' => $_POST['signature']
             );
             if(checkSign($data,'demo-game-2-secret')){
-                $orderRs = $mysqli->query("SELECT * FROM game_order WHERE game_order = '".$data['game_order_no']."' AND status = 0");
+                $orderRs = $mysqli->query("SELECT * FROM game_order WHERE game_order = '".$data['game_orderno']."' AND status = 0");
                 if($orderRs->num_rows > 0){
                     $order = $orderRs->fetch_assoc();
-                    $mysqli->query("UPDATE game_order SET status = 1 WHERE game_order = '".$data['game_order_no']."'");
+                    $mysqli->query("UPDATE game_order SET status = 1 WHERE game_order = '".$data['game_orderno']."'");
                     $gold =  $_POST['total_fee']*1000;
                     $mysqli->query("UPDATE game_user SET gold = gold + ".$gold." WHERE id = ".$order['game_user_id']);
                     echo 'SUCCESS';
