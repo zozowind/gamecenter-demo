@@ -29,12 +29,7 @@
             };
             sendMessage(message, this.hGameDomain);
         },
-        /**
-         * 游戏内分享完成后的回调接口
-         */
-        shareCallback: function(data){
-            this.afterShare(data);
-        },
+
         /**
          * 游戏内购买接口
          * @param payData 支付信息，支付信息字段和签名要求详见文档
@@ -50,12 +45,7 @@
             };
             sendMessage(message, this.hGameDomain);
         },
-        /**
-         * 游戏内支付完成后的回调接口
-         */
-        payCallback: function(data){
-            this.afterPay(data);
-        },
+
         /**
          * 游戏内上报游戏成绩到排行榜接口
          * @param int score 游戏成绩
@@ -69,13 +59,6 @@
                 }
             };
             sendMessage(message, this.hGameDomain);
-        },
-        /**
-         * 游戏内上报
-         * @param data
-         */
-        scoreReportCallback: function(data){
-            this.afterScoreReport(data);
         }
     };
 
@@ -102,13 +85,13 @@
         if(typeof message == 'object'){
             switch(message.action){
                 case 'share':
-                    hGame.shareCallback(message.content);
+                    shareCallback(message.content);
                     break;
                 case 'pay':
-                    hGame.payCallback(message.content);
+                    payCallback(message.content);
                     break;
                 case 'scoreReport':
-                    hGame.scoreReportCallback(message.content);
+                    scoreReportCallback(message.content);
                     break;
                 default:
                     break;
@@ -117,6 +100,29 @@
             //报错
             alert('消息体格式不正确');
         }
+    };
+
+    /**
+     * 游戏内分享完成后的回调接口
+     */
+    var shareCallback = function(data){
+        hGame.afterShare(data);
+    };
+
+
+    /**
+     * 游戏内支付完成后的回调接口
+     */
+    var payCallback = function(data){
+        hGame..afterPay(data);
+    };
+
+    /**
+     * 游戏内上报
+     * @param data
+     */
+    var scoreReportCallback = function(data){
+        this.afterScoreReport(data);
     };
 
     //添加消息监听
