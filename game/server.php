@@ -91,13 +91,12 @@ if(isset($_GET['ticket'])){
         "login_type" => '1',
     );
 
-    $result = httpRequestJson($checkTicketUrl, $requestData);
+    $result = json_encode(httpRequestJson($checkTicketUrl, $requestData),true);
 
-    if($result['code']!=0){
+    if($result && $result['code']!=0){
         die($result['message']);
     }
-    $userInfo = $result['data'];
-
+    
     $rs = $mysqli->query("SELECT * FROM game_user WHERE center_user = '".$userInfo['open_id']."'");
     if($rs->num_rows > 0){
         $user = $rs->fetch_assoc();
