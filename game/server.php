@@ -98,6 +98,7 @@ if(isset($_GET['ticket'])){
     if($result && $result['code']!=0){
         die($result['message']);
     }
+    $userInfo = $result['data'];
     $rs = $mysqli->query("SELECT * FROM game_user WHERE center_user = '".$userInfo['open_id']."'");
     if($rs->num_rows > 0){
         $user = $rs->fetch_assoc();
@@ -167,18 +168,35 @@ if(isset($_GET['action'])){
                 'signature' => $_POST['signature']
             );
             if(checkSign($data,'demo-game-2-secret')){
-                $orderRs = $mysqli->query("SELECT * FROM game_order WHERE game_order = '".$data['game_orderno']."' AND status = 0");
+                $orderRs = $mysqli->query("SELECT * FROM game_order WHERE game_order = '".$data['game_orderno']."'");
                 if($orderRs->num_rows > 0){
                     $order = $orderRs->fetch_assoc();
-                    $mysqli->query("UPDATE game_order SET status = 1 WHERE game_order = '".$data['game_orderno']."'");
-                    $gold =  $_POST['total_fee']*1000;
-                    $mysqli->query("UPDATE game_user SET gold = gold + ".$gold." WHERE id = ".$order['game_user_id']);
-                    echo 'SUCCESS';
+                    if($order['status']==0){
+                        $mysqli->query("UPDATE game_order SET status = 1 WHERE game_order = '".$data['game_orderno']."'");
+                        $gold =  $_POST['total_fee']*1000;
+                        $mysqli->query("UPDATE game_user SET gold = gold + ".$gold." WHERE id = ".$order['game_user_id']);
+                        echo json_encode(array(
+                            'code'=> 0,
+                            'message'=>'游戏支付成功',
+                        ));
+                    }else{
+                        echo json_encode(array(
+                            'code'=> -2,
+                            'message'=>'订单重复',
+                        ));
+                    }
+
                 }else{
-                    echo 'FAIL';
+                    echo json_encode(array(
+                        'code'=> -3,
+                        'message'=>'游戏订单不存在',
+                    ));
                 }
             }else{
-                echo 'FAIL';
+                echo json_encode(array(
+                        'code'=> -9011,
+                        'message'=>'签名验证错误',
+                    ));
             }
             exit;
             break;
