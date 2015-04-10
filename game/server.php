@@ -1,5 +1,15 @@
 <?php  
 session_start();
+
+$game_key = 'demo-game-2';
+$game_secret = 'demo-game-2-secret';
+
+$checkTicketUrl = 'http://dev1.h5.gamexhb.com/user/getticketuserinfo';
+/**
+ * 生成随机数方法
+ * @param $n int 随机数位置
+ * @return null|string 随机字符串
+ */
 function randString($n){
     $str = null;
     $strPol = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz";
@@ -11,6 +21,12 @@ function randString($n){
     return $str;
 }
 
+/**
+ * 签名方法
+ * @param $data array 需要签名的数据
+ * @param $secret string 游戏中心分配的秘钥
+ * @return mixed 签名完成后的数据
+ */
 function signTheData($data, $secret){
     ksort($data);
     foreach($data as $k=>$v){
@@ -21,6 +37,12 @@ function signTheData($data, $secret){
     return $data;
 }
 
+/**
+ * 校验签名方法
+ * @param $data array 签名的数据
+ * @param $secret string 游戏中心分配的秘钥
+ * @return bool
+ */
 function checkSign($data, $secret){
     $signature = $data['signature'];
     unset($data['signature']);
@@ -32,10 +54,51 @@ function checkSign($data, $secret){
     return sha1($str) == $signature;
 }
 
+/**
+ * post获取接口
+ * @param $url string ticket接口地址
+ * @return mixed
+ */
+function httpRequestJson($url, $data){
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL,$url);
+    //curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    //curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_POST,1);
+    curl_setopt($ch,CURLOPT_POSTFIELDS, $data);
+    $result = curl_exec($ch);
+    curl_close($ch);
+    return $result;
+}
+
 $mysqli = new mysqli('222.73.184.169', 'chenzhijie', 'chenzhijie', 'demo', '63306');
 if(isset($_GET['ticket'])){
     //@ticket 登录后需要验证ticket
-    $rs = $mysqli->query("SELECT * FROM game_user WHERE center_user = '".$_GET['ticket']."'");
+    $keys = array('game_key','timestamp','nonce','login_type','ticket','signature');
+    foreach($keys as $key){
+        $getData[$key] = $_GET[$key];
+    }
+    if(!checkSign($getData,$game_secret)){
+        die('签名不正确');
+    }
+
+    $requestData = array(
+        "login_ticket"    => $getData['ticket'],
+        "game_key"  => $game_key,
+        "timestamp"   => time(),
+        "nonce" => randString(8),
+        "login_type" => '1',
+    );
+
+    $result = httpRequestJson($checkTicketUrl, $requestData);
+
+    if($result['code']!=0){
+        die($result['message']);
+    }
+    $userInfo = $result['data'];
+
+    $rs = $mysqli->query("SELECT * FROM game_user WHERE center_user = '".$userInfo['open_id']."'");
     if($rs->num_rows > 0){
         $user = $rs->fetch_assoc();
         $gold = $user['gold'];
@@ -44,7 +107,7 @@ if(isset($_GET['ticket'])){
         //创建账号
         $gold = 0;
         $game_user = 'g_'.md5(uniqid(mt_rand(), true));
-        $mysqli->query("INSERT INTO game_user (username, gold, center_user) VALUES ('".$game_user."','".$gold."','".$_GET['ticket']."')");
+        $mysqli->query("INSERT INTO game_user (username, gold, center_user) VALUES ('".$game_user."','".$gold."','".$userInfo['open_id']."')");
     }
     $_SESSION['username'] = $game_user;
     $_SESSION['gold'] = $gold;
@@ -85,7 +148,7 @@ if(isset($_GET['action'])){
             $data['timestamp'] = time();
             //生成随机数
             $data['nonce'] = randString(10);
-            $data = signTheData($data, 'demo-game-2-secret');
+            $data = signTheData($data, $game_secret);
             $mysqli->query("INSERT INTO game_order (game_user_id, game_order, game_item, game_fee, status)
             VALUES (".$user['id'].",'".$data['game_orderno']."','".$_POST['itemId']."',".$item[$_POST['itemId']]['fee'].",0)");
             //优先支付方式可以由客户端选择也可以由服务端指定
