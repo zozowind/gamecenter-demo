@@ -117,7 +117,7 @@ if(isset($_GET['ticket'])){
 if(isset($_GET['action'])){
     $item = array(
         'item001' => array('fee'=>0.01, 'subject'=>'10个金币', 'body'=>'10个游戏金币'),
-        'item002' => array('fee'=>0.02, 'subject'=>'20个金币', 'body'=>'20个游戏金币'),
+        'item002' => array('fee'=>5.99, 'subject'=>'元宝60', 'body'=>'60个元宝'),
     );
     switch ($_GET['action']) {
         case 'buyGold':

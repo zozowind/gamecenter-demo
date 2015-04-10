@@ -63,7 +63,7 @@
 					</div>
 					<div class="controls">
 						<button class="buyBtn" itemId="item001">买10个金币</button>
-                        <button class="buyBtn" itemId="yuanbao60">60个元宝</button>
+                        <button class="buyBtn" itemId="item002">60个元宝</button>
                         <button id="refresh">刷新金币记录</button>
 					</div>
 		        </div>
@@ -93,9 +93,6 @@
             //获取购买商品金币的签名
 			buyBtn.on('touchend', function(){
                 var itemId = $(this).attr('itemId');
-                hGame.pay({"order_no": 'testorder001', "product_id": itemId},'pay_apple');
-                /*
-                var itemId = $(this).attr('itemId');
 				$.ajax({
 	                type: "POST",
 	                url: "server.php?action=buyGold",
@@ -112,7 +109,6 @@
 	                    alert("获取金币失败");
 	                }
             	});
-            	*/
 			});
 
             refreshBtn.on('touchend', function(){
