@@ -7,6 +7,7 @@
         var _self = this;
         this.game_key = config.game_key;
         this.hGameDomain = 'http://dev1.h5.gamexhb.com';  //填写实际的游戏服务器地址
+        this.mWindow = config.messageWindow?config.messageWindow:window.top;
         //添加消息监听
         window.addEventListener('message', function(event){
             _self.messageHandler(event.data);
@@ -72,7 +73,7 @@
          * @param hGameDomain 发送对象域名
          */
         sendMessage: function(message, hGameDomain){
-            var iframe = window.parent;
+            var iframe = this.mWindow;
             if(typeof (iframe != undefined)){
                 iframe.postMessage(message, hGameDomain);
             }else{

@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="de048362-2b12-4e2e-b3c0-03b44e0971f1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/index.php" afterPath="$PROJECT_DIR$/app/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/server.php" afterPath="$PROJECT_DIR$/app/server.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/game/demo1.php" afterPath="$PROJECT_DIR$/game/demo1.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/game/js/hgame-sdk.js" afterPath="$PROJECT_DIR$/game/js/hgame-sdk.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/game/server.php" afterPath="$PROJECT_DIR$/game/server.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="gamecenter-demo.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,22 +33,93 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-16.375" vertical-offset="477" max-vertical-offset="1110">
-              <caret line="58" column="4" selection-start-line="58" selection-start-column="4" selection-end-line="58" selection-end-column="4" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="197" max-vertical-offset="1110">
+              <caret line="15" column="26" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="server.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="server.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/server.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.44677418" vertical-offset="1058" max-vertical-offset="2490">
-              <caret line="89" column="39" selection-start-line="89" selection-start-column="39" selection-end-line="89" selection-end-column="39" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="975" max-vertical-offset="2745">
+              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
               <folding>
-                <marker date="1427431758000" expanded="true" signature="2093:2188" placeholder="Update app_u..." />
-                <marker date="1427431758000" expanded="true" signature="3937:4009" placeholder="SELECT * FRO..app_user..." />
+                <marker date="1427522091000" expanded="true" signature="2170:2265" placeholder="Update app_u..." />
+                <marker date="1427522091000" expanded="true" signature="4417:4473" placeholder="SELECT * FRO..app_user..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bootstrap.min.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/game/js/bootstrap.min.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="120">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="demo2.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/game/demo2.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1338" max-vertical-offset="2085">
+              <caret line="85" column="37" selection-start-line="85" selection-start-column="37" selection-end-line="85" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="server.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/game/server.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="663" max-vertical-offset="3390">
+              <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
+              <folding>
+                <marker date="1428908165000" expanded="true" signature="2559:2629" placeholder="SELECT * FRO..game_user..." />
+                <marker date="1428908165000" expanded="true" signature="2892:3008" placeholder="INSERT INTO ..." />
+                <marker date="1428908165000" expanded="true" signature="3721:3789" placeholder="SELECT * FRO..game_user..." />
+                <marker date="1428908165000" expanded="true" signature="4720:4923" placeholder="INSERT INTO ..." />
+                <marker date="1428908165000" expanded="true" signature="5647:5692" placeholder="SELECT * FRO..game_order..." />
+                <marker date="1428908165000" expanded="true" signature="5647:5716" placeholder="SELECT * FRO..game_order..." />
+                <marker date="1428908165000" expanded="true" signature="5647:5718" placeholder="SELECT * FRO..game_order..." />
+                <marker date="1428908165000" expanded="true" signature="5905:5984" placeholder="UPDATE game_..." />
+                <marker date="1428908165000" expanded="true" signature="6087:6143" placeholder="UPDATE game_..." />
+                <marker date="1428908165000" expanded="true" signature="7018:7086" placeholder="SELECT * FRO..game_user..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="jquery-2.1.1.min.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/game/js/jquery-2.1.1.min.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="150">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="demo1.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/game/demo1.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-4.375" vertical-offset="0" max-vertical-offset="2025">
+              <caret line="7" column="70" selection-start-line="7" selection-start-column="70" selection-end-line="7" selection-end-column="70" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="hgame-sdk.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/game/js/hgame-sdk.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.21293375" vertical-offset="990" max-vertical-offset="2280">
+              <caret line="75" column="38" selection-start-line="75" selection-start-column="38" selection-end-line="75" selection-end-column="38" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -54,8 +127,8 @@
       <file leaf-file-name="server.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/gamecenter/server.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="479" max-vertical-offset="1260">
-              <caret line="73" column="14" selection-start-line="73" selection-start-column="14" selection-end-line="73" selection-end-column="14" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="1260">
+              <caret line="18" column="49" selection-start-line="18" selection-start-column="49" selection-end-line="18" selection-end-column="49" />
               <folding>
                 <marker date="1427107255000" expanded="true" signature="512:605" placeholder="INSERT INTO ..." />
                 <marker date="1427107255000" expanded="true" signature="720:781" placeholder="SELECT * FRO..center_user..." />
@@ -85,20 +158,24 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/gamecenter/js/sdk.js" />
-        <option value="$PROJECT_DIR$/game/server.php" />
         <option value="$PROJECT_DIR$/gamecenter/server.php" />
         <option value="$PROJECT_DIR$/gamecenter/index.php" />
         <option value="$PROJECT_DIR$/gamecenter/js/preload.js" />
-        <option value="$PROJECT_DIR$/app/index.php" />
         <option value="$PROJECT_DIR$/app/server.php" />
+        <option value="$PROJECT_DIR$/game/js/sdk.js" />
+        <option value="$PROJECT_DIR$/app/index.php" />
+        <option value="$PROJECT_DIR$/game/demo1.php" />
+        <option value="$PROJECT_DIR$/game/server.php" />
+        <option value="$PROJECT_DIR$/game/demo2.php" />
+        <option value="$PROJECT_DIR$/game/js/hgame-sdk.js" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1292" />
+    <option name="x" value="4" />
     <option name="y" value="23" />
-    <option name="width" value="1238" />
+    <option name="width" value="1239" />
     <option name="height" value="777" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -170,6 +247,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="game" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gamecenter-demo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gamecenter-demo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -183,6 +278,7 @@
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="FullScreen" value="false" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -213,6 +309,9 @@
     <list size="0" />
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="de048362-2b12-4e2e-b3c0-03b44e0971f1" name="Default" comment="" />
@@ -223,7 +322,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1292" y="23" width="1238" height="777" extended-state="0" />
+    <frame x="4" y="23" width="1239" height="777" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -233,13 +332,13 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22408026" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22055137" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32988626" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11353712" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -266,26 +365,18 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="10" />
+      <option name="time" value="13" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="477" max-vertical-offset="1110">
-          <caret line="61" column="53" selection-start-line="61" selection-start-column="53" selection-end-line="61" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/server.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2460">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1427431758000" expanded="true" signature="2093:2188" placeholder="Update app_u..." />
-            <marker date="1427431758000" expanded="true" signature="3937:4009" placeholder="SELECT * FRO..app_user..." />
+            <marker date="1427522091000" expanded="true" signature="2170:2265" placeholder="Update app_u..." />
+            <marker date="1427522091000" expanded="true" signature="4417:4473" placeholder="SELECT * FRO..app_user..." />
           </folding>
         </state>
       </provider>
@@ -313,8 +404,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2460">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1427431758000" expanded="true" signature="2093:2188" placeholder="Update app_u..." />
-            <marker date="1427431758000" expanded="true" signature="3937:4009" placeholder="SELECT * FRO..app_user..." />
+            <marker date="1427522091000" expanded="true" signature="2170:2265" placeholder="Update app_u..." />
+            <marker date="1427522091000" expanded="true" signature="4417:4473" placeholder="SELECT * FRO..app_user..." />
           </folding>
         </state>
       </provider>
@@ -346,8 +437,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="900" max-vertical-offset="2355">
           <caret line="87" column="31" selection-start-line="87" selection-start-column="31" selection-end-line="87" selection-end-column="31" />
           <folding>
-            <marker date="1427431758000" expanded="true" signature="2093:2188" placeholder="Update app_u..." />
-            <marker date="1427431758000" expanded="true" signature="3937:4009" placeholder="SELECT * FRO..app_user..." />
+            <marker date="1427522091000" expanded="true" signature="2170:2265" placeholder="Update app_u..." />
+            <marker date="1427522091000" expanded="true" signature="4417:4473" placeholder="SELECT * FRO..app_user..." />
           </folding>
         </state>
       </provider>
@@ -407,8 +498,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="124" max-vertical-offset="1305">
           <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding>
-            <marker date="1427431758000" expanded="true" signature="2093:2188" placeholder="Update app_u..." />
-            <marker date="1427431758000" expanded="true" signature="3937:4009" placeholder="SELECT * FRO..app_user..." />
+            <marker date="1427522091000" expanded="true" signature="2170:2265" placeholder="Update app_u..." />
+            <marker date="1427522091000" expanded="true" signature="4417:4473" placeholder="SELECT * FRO..app_user..." />
           </folding>
         </state>
       </provider>
@@ -475,8 +566,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="45" max-vertical-offset="1305">
           <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding>
-            <marker date="1427431758000" expanded="true" signature="2093:2188" placeholder="Update app_u..." />
-            <marker date="1427431758000" expanded="true" signature="3937:4009" placeholder="SELECT * FRO..app_user..." />
+            <marker date="1427522091000" expanded="true" signature="2170:2265" placeholder="Update app_u..." />
+            <marker date="1427522091000" expanded="true" signature="4417:4473" placeholder="SELECT * FRO..app_user..." />
           </folding>
         </state>
       </provider>
@@ -543,8 +634,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="1305">
           <caret line="29" column="21" selection-start-line="15" selection-start-column="19" selection-end-line="29" selection-end-column="21" />
           <folding>
-            <marker date="1427431758000" expanded="true" signature="2093:2188" placeholder="Update app_u..." />
-            <marker date="1427431758000" expanded="true" signature="3937:4009" placeholder="SELECT * FRO..app_user..." />
+            <marker date="1427522091000" expanded="true" signature="2170:2265" placeholder="Update app_u..." />
+            <marker date="1427522091000" expanded="true" signature="4417:4473" placeholder="SELECT * FRO..app_user..." />
           </folding>
         </state>
       </provider>
@@ -598,34 +689,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/game/js/jquery-2.1.1.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="644">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/game/server.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41129032" vertical-offset="0" max-vertical-offset="915">
-          <caret line="17" column="34" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/game/demo1.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1725">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/game/demo2.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1710">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/gamecenter/js/preload.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.28526148" vertical-offset="135" max-vertical-offset="1785">
@@ -640,10 +703,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/game/js/bootstrap.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="120">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/gamecenter/server.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="479" max-vertical-offset="1260">
-          <caret line="73" column="14" selection-start-line="73" selection-start-column="14" selection-end-line="73" selection-end-column="14" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="1260">
+          <caret line="18" column="49" selection-start-line="18" selection-start-column="49" selection-end-line="18" selection-end-column="49" />
           <folding>
             <marker date="1427107255000" expanded="true" signature="512:605" placeholder="INSERT INTO ..." />
             <marker date="1427107255000" expanded="true" signature="720:781" placeholder="SELECT * FRO..center_user..." />
@@ -658,22 +729,73 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/game/js/jquery-2.1.1.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="150">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.375" vertical-offset="477" max-vertical-offset="1110">
-          <caret line="58" column="4" selection-start-line="58" selection-start-column="4" selection-end-line="58" selection-end-column="4" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="197" max-vertical-offset="1110">
+          <caret line="15" column="26" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/server.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44677418" vertical-offset="1058" max-vertical-offset="2490">
-          <caret line="89" column="39" selection-start-line="89" selection-start-column="39" selection-end-line="89" selection-end-column="39" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="975" max-vertical-offset="2745">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding>
-            <marker date="1427431758000" expanded="true" signature="2093:2188" placeholder="Update app_u..." />
-            <marker date="1427431758000" expanded="true" signature="3937:4009" placeholder="SELECT * FRO..app_user..." />
+            <marker date="1427522091000" expanded="true" signature="2170:2265" placeholder="Update app_u..." />
+            <marker date="1427522091000" expanded="true" signature="4417:4473" placeholder="SELECT * FRO..app_user..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/game/demo2.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1338" max-vertical-offset="2085">
+          <caret line="85" column="37" selection-start-line="85" selection-start-column="37" selection-end-line="85" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/game/server.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="663" max-vertical-offset="3390">
+          <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
+          <folding>
+            <marker date="1428908165000" expanded="true" signature="2559:2629" placeholder="SELECT * FRO..game_user..." />
+            <marker date="1428908165000" expanded="true" signature="2892:3008" placeholder="INSERT INTO ..." />
+            <marker date="1428908165000" expanded="true" signature="3721:3789" placeholder="SELECT * FRO..game_user..." />
+            <marker date="1428908165000" expanded="true" signature="4720:4923" placeholder="INSERT INTO ..." />
+            <marker date="1428908165000" expanded="true" signature="5647:5692" placeholder="SELECT * FRO..game_order..." />
+            <marker date="1428908165000" expanded="true" signature="5647:5716" placeholder="SELECT * FRO..game_order..." />
+            <marker date="1428908165000" expanded="true" signature="5647:5718" placeholder="SELECT * FRO..game_order..." />
+            <marker date="1428908165000" expanded="true" signature="5905:5984" placeholder="UPDATE game_..." />
+            <marker date="1428908165000" expanded="true" signature="6087:6143" placeholder="UPDATE game_..." />
+            <marker date="1428908165000" expanded="true" signature="7018:7086" placeholder="SELECT * FRO..game_user..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/game/demo1.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.375" vertical-offset="0" max-vertical-offset="2025">
+          <caret line="7" column="70" selection-start-line="7" selection-start-column="70" selection-end-line="7" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/game/js/hgame-sdk.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.21293375" vertical-offset="990" max-vertical-offset="2280">
+          <caret line="75" column="38" selection-start-line="75" selection-start-column="38" selection-end-line="75" selection-end-column="38" />
+          <folding />
         </state>
       </provider>
     </entry>
