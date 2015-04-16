@@ -1,8 +1,8 @@
 <?php
     session_start();
     //定义从游戏管理中心获取的APPKEY_ID和SECRET_KEY
-    define('APPKEY_ID', 'demo_appkey_id');
-    define('SECRET_KEY', 'demo_secret_key');
+    define('APPKEY_ID', 'sdk_test_key');
+    define('SECRET_KEY', 'sdk_test_secret');
 
     /**
      * 生成随机数方法
