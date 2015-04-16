@@ -119,9 +119,9 @@
             'timestamp' => time(),
             'ticket' => $ticket
         );
-        if (isset($_SESSION['username'])) {
+        $demoUser = 'demo_user';
+        if (isset($demoUser)) {
             //保存ticket
-            $demoUser = 'demo_user';
             $mysqli = new mysqli('222.73.184.169', 'chenzhijie', 'chenzhijie', 'demo', '63306');
             $mysqli->query("Update app_user SET ticket = '" . $ticket . "' WHERE username = '" . $demoUser . "'");
             $mysqli->close();
