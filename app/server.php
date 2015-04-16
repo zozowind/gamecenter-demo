@@ -3,6 +3,40 @@
     //定义从游戏管理中心获取的APPKEY_ID和SECRET_KEY
     define('APPKEY_ID', 'demo_appkey_id');
     define('SECRET_KEY', 'demo_secret_key');
+
+    /**
+     * 生成随机数方法
+     * @param $n int 随机数位置
+     * @return null|string 随机字符串
+     */
+    function randString($n){
+        $str = null;
+        $strPol = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz";
+        $max = strlen($strPol)-1;
+
+        for($i=0;$i<$n;$i++){
+            $str.=$strPol[rand(0,$max)];
+        }
+        return $str;
+    }
+
+    /**
+     * 签名方法
+     * @param $data array 需要签名的数据
+     * @param $secret string 游戏中心分配的秘钥
+     * @return mixed 签名完成后的数据
+     */
+    function signTheData($data, $secret){
+        ksort($data);
+        foreach($data as $k=>$v){
+            $tmp[] = $k.'='.$v;
+        }
+        $str = implode('&',$tmp).$secret;
+        $data['signature'] = sha1($str);
+        return $data;
+    }
+
+
     switch ($_GET['action']) {      //模拟路由
         case 'login':               //用户登录
             login();
@@ -87,23 +121,21 @@
         );
         if (isset($_SESSION['username'])) {
             //保存ticket
+            $demoUser = 'demo_user';
             $mysqli = new mysqli('222.73.184.169', 'chenzhijie', 'chenzhijie', 'demo', '63306');
-            $mysqli->query("Update app_user SET ticket = '" . $ticket . "' WHERE username = '" . $_SESSION['username'] . "'");
+            $mysqli->query("Update app_user SET ticket = '" . $ticket . "' WHERE username = '" . $demoUser . "'");
             $mysqli->close();
             $data['user_type'] = 'real';
         } else {
             $data['user_type'] = 'temp';
         }
-        ksort($data);
-        $signature = sha1(json_encode($data) . SECRET_KEY);
-        $data['signature'] = $signature;
+        $data = signTheData($data, SECRET_KEY);
 
-        $callback = $_GET['callback'];
-        echo $callback . '(' . json_encode(array(
+        return json_encode(array(
                 'code' => 0,
                 'message' => '成功',
                 'data' => $data
-            )) . ')';
+            ));
     }
 
     /**
@@ -124,7 +156,7 @@
             $result = array(
                 'code' => '0',
                 'message' => '成功',
-                'app_user_id' => md5($user['username']),
+                'app_user_id' => $user['username'],
             );
         }
         /*
