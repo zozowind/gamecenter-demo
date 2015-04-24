@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="de048362-2b12-4e2e-b3c0-03b44e0971f1" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/game/server.php" afterPath="$PROJECT_DIR$/game/server.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="gamecenter-demo.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -61,12 +60,40 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="demo2.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="demo2.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/game/demo2.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.4704918" vertical-offset="633" max-vertical-offset="2085">
+            <state vertical-scroll-proportion="-34.291668" vertical-offset="2" max-vertical-offset="1380">
               <caret line="102" column="51" selection-start-line="102" selection-start-column="51" selection-end-line="102" selection-end-column="51" />
-              <folding />
+              <folding>
+                <element signature="tag#head#0;tag#html#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="server.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/game/server.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.9715243" vertical-offset="2045" max-vertical-offset="2790">
+              <caret line="175" column="1" selection-start-line="175" selection-start-column="1" selection-end-line="175" selection-end-column="1" />
+              <folding>
+                <element signature="e#6101#7468#0#PHP" expanded="false" />
+                <marker date="1429866164000" expanded="true" signature="2330:2398" placeholder="SELECT * FRO..game_user..." />
+                <marker date="1429866164000" expanded="true" signature="3334:3537" placeholder="INSERT INTO ..." />
+                <marker date="1429866164000" expanded="true" signature="4261:4332" placeholder="SELECT * FRO..game_order..." />
+                <marker date="1429866164000" expanded="true" signature="4519:4598" placeholder="UPDATE game_..." />
+                <marker date="1429866164000" expanded="true" signature="4701:4757" placeholder="UPDATE game_..." />
+                <marker date="1429866164000" expanded="true" signature="5620:5688" placeholder="SELECT * FRO..game_user..." />
+                <marker date="1429866164000" expanded="true" signature="6902:6972" placeholder="SELECT * FRO..game_user..." />
+                <marker date="1429866164000" expanded="true" signature="7235:7351" placeholder="INSERT INTO ..." />
+                <marker date="1429866164000" expanded="true" signature="616:684" placeholder="SELECT * FRO..game_user..." />
+                <marker date="1429866164000" expanded="true" signature="1103:1205" placeholder="INSERT INTO ..." />
+                <marker date="1429866164000" expanded="true" signature="1619:1690" placeholder="SELECT * FRO..game_order..." />
+                <marker date="1429866164000" expanded="true" signature="1689:6134" placeholder="UPDATE game_..." />
+                <marker date="1429866164000" expanded="true" signature="6141:6197" placeholder="UPDATE game_..." />
+                <marker date="1429866164000" expanded="true" signature="7010:7078" placeholder="SELECT * FRO..game_user..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -311,7 +338,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25833333" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25833333" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -769,39 +796,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/game/server.php">
+    <entry file="file://$PROJECT_DIR$/game/demo2.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44833624" vertical-offset="899" max-vertical-offset="3390">
-          <caret line="77" column="80" selection-start-line="77" selection-start-column="80" selection-end-line="77" selection-end-column="80" />
+        <state vertical-scroll-proportion="-34.291668" vertical-offset="2" max-vertical-offset="1380">
+          <caret line="102" column="51" selection-start-line="102" selection-start-column="51" selection-end-line="102" selection-end-column="51" />
           <folding>
-            <marker date="1429866060000" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
-            <marker date="1429866060000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..game_order..." />
-            <marker date="1429866060000" expanded="true" signature="-1:-1" placeholder="UPDATE game_..." />
-            <marker date="1429866060000" expanded="true" signature="-1:-1" placeholder="UPDATE game_..." />
-            <marker date="1429866060000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..game_user..." />
-            <marker date="1429866060000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..game_user..." />
-            <marker date="1429866060000" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
-            <marker date="1429866060000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..game_user..." />
-            <marker date="1429866060000" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
-            <marker date="1429866060000" expanded="true" signature="-1:-1" placeholder="UPDATE game_..." />
-            <marker date="1429866060000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..game_user..." />
-            <marker date="1429866060000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..game_user..." />
-            <marker date="1429866060000" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
-            <marker date="1429866060000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..game_user..." />
-            <marker date="1429866060000" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
-            <marker date="1429866060000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..game_order..." />
-            <marker date="1429866060000" expanded="true" signature="-1:-1" placeholder="UPDATE game_..." />
-            <marker date="1429866060000" expanded="true" signature="-1:-1" placeholder="UPDATE game_..." />
-            <marker date="1429866060000" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..game_user..." />
+            <element signature="tag#head#0;tag#html#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/game/demo2.php">
+    <entry file="file://$PROJECT_DIR$/game/server.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.4704918" vertical-offset="633" max-vertical-offset="2085">
-          <caret line="102" column="51" selection-start-line="102" selection-start-column="51" selection-end-line="102" selection-end-column="51" />
-          <folding />
+        <state vertical-scroll-proportion="0.9715243" vertical-offset="2045" max-vertical-offset="2790">
+          <caret line="175" column="1" selection-start-line="175" selection-start-column="1" selection-end-line="175" selection-end-column="1" />
+          <folding>
+            <element signature="e#6101#7468#0#PHP" expanded="false" />
+            <marker date="1429866164000" expanded="true" signature="2330:2398" placeholder="SELECT * FRO..game_user..." />
+            <marker date="1429866164000" expanded="true" signature="3334:3537" placeholder="INSERT INTO ..." />
+            <marker date="1429866164000" expanded="true" signature="4261:4332" placeholder="SELECT * FRO..game_order..." />
+            <marker date="1429866164000" expanded="true" signature="4519:4598" placeholder="UPDATE game_..." />
+            <marker date="1429866164000" expanded="true" signature="4701:4757" placeholder="UPDATE game_..." />
+            <marker date="1429866164000" expanded="true" signature="5620:5688" placeholder="SELECT * FRO..game_user..." />
+            <marker date="1429866164000" expanded="true" signature="6902:6972" placeholder="SELECT * FRO..game_user..." />
+            <marker date="1429866164000" expanded="true" signature="7235:7351" placeholder="INSERT INTO ..." />
+            <marker date="1429866164000" expanded="true" signature="616:684" placeholder="SELECT * FRO..game_user..." />
+            <marker date="1429866164000" expanded="true" signature="1103:1205" placeholder="INSERT INTO ..." />
+            <marker date="1429866164000" expanded="true" signature="1619:1690" placeholder="SELECT * FRO..game_order..." />
+            <marker date="1429866164000" expanded="true" signature="1689:6134" placeholder="UPDATE game_..." />
+            <marker date="1429866164000" expanded="true" signature="6141:6197" placeholder="UPDATE game_..." />
+            <marker date="1429866164000" expanded="true" signature="7010:7078" placeholder="SELECT * FRO..game_user..." />
+          </folding>
         </state>
       </provider>
     </entry>

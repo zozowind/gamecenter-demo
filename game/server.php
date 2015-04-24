@@ -73,47 +73,6 @@ function httpRequestJson($url, $data){
 }
 
 $mysqli = new mysqli('222.73.184.169', 'chenzhijie', 'chenzhijie', 'demo', '63306');
-if(isset($_GET['ticket'])){
-    //@ticket 登录后需要验证ticket
-    $keys = array('game_key','timestamp','nonce','login_type','ticket','game_url','signature');
-    foreach($keys as $key){
-        $getData[$key] = $_GET[$key];
-    }
-    if(!checkSign($getData,$game_secret)){
-        die('签名不正确');
-    }
-
-    $requestData = array(
-        "login_ticket"    => $getData['ticket'],
-        "game_key"  => $game_key,
-        "timestamp"   => time(),
-        "nonce" => randString(8),
-        "login_type" => '1',
-    );
-
-    $result = json_decode(httpRequestJson($checkTicketUrl, signTheData($requestData,$game_secret)),true);
-    if(!$result){
-        die('认证服务器出错！');
-    }
-    if($result && $result['code']!=0){
-        die($result['message']);
-    }
-    $userInfo = $result['data'];
-    $rs = $mysqli->query("SELECT * FROM game_user WHERE center_user = '".$userInfo['open_id']."'");
-    if($rs->num_rows > 0){
-        $user = $rs->fetch_assoc();
-        $gold = $user['gold'];
-        $game_user = $user['username'];
-    }else{
-        //创建账号
-        $gold = 0;
-        $game_user = 'g_'.md5(uniqid(mt_rand(), true));
-        $mysqli->query("INSERT INTO game_user (username, gold, center_user) VALUES ('".$game_user."','".$gold."','".$userInfo['open_id']."')");
-    }
-    $_SESSION['username'] = $game_user;
-    $_SESSION['gold'] = $gold;
-    $_SESSION['message'] = '登录成功';
-}
 if(isset($_GET['action'])){
     $item = array(
         'item001' => array('fee'=>0.01, 'subject'=>'10个金币', 'body'=>'10个游戏金币'),
@@ -194,9 +153,9 @@ if(isset($_GET['action'])){
                 }
             }else{
                 echo json_encode(array(
-                        'code'=> -9011,
-                        'message'=>'签名验证错误',
-                    ));
+                    'code'=> -9011,
+                    'message'=>'签名验证错误',
+                ));
             }
             exit;
             break;
@@ -214,6 +173,47 @@ if(isset($_GET['action'])){
         default:
             break;
     }
+}
+if(isset($_GET['ticket'])){
+    //@ticket 登录后需要验证ticket
+    $keys = array('game_key','timestamp','nonce','login_type','ticket','game_url','signature');
+    foreach($keys as $key){
+        $getData[$key] = $_GET[$key];
+    }
+    if(!checkSign($getData,$game_secret)){
+        die('签名不正确');
+    }
+
+    $requestData = array(
+        "login_ticket"    => $getData['ticket'],
+        "game_key"  => $game_key,
+        "timestamp"   => time(),
+        "nonce" => randString(8),
+        "login_type" => '1',
+    );
+
+    $result = json_decode(httpRequestJson($checkTicketUrl, signTheData($requestData,$game_secret)),true);
+    if(!$result){
+        die('认证服务器出错！');
+    }
+    if($result && $result['code']!=0){
+        die($result['message']);
+    }
+    $userInfo = $result['data'];
+    $rs = $mysqli->query("SELECT * FROM game_user WHERE center_user = '".$userInfo['open_id']."'");
+    if($rs->num_rows > 0){
+        $user = $rs->fetch_assoc();
+        $gold = $user['gold'];
+        $game_user = $user['username'];
+    }else{
+        //创建账号
+        $gold = 0;
+        $game_user = 'g_'.md5(uniqid(mt_rand(), true));
+        $mysqli->query("INSERT INTO game_user (username, gold, center_user) VALUES ('".$game_user."','".$gold."','".$userInfo['open_id']."')");
+    }
+    $_SESSION['username'] = $game_user;
+    $_SESSION['gold'] = $gold;
+    $_SESSION['message'] = '登录成功';
 }
 $mysqli->close();
 header('Location:demo2.php');
