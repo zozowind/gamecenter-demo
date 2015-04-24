@@ -4,7 +4,7 @@ session_start();
 $game_key = 'demo-game-2';
 $game_secret = 'demo-game-2-secret';
 
-$checkTicketUrl = 'http://dev1.h5.gamexhb.com/user/getticketuserinfo';
+$checkTicketUrl = 'http://gc.dev.gc.ghome.com/user/getticketuserinfo';
 /**
  * 生成随机数方法
  * @param $n int 随机数位置
