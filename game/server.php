@@ -75,7 +75,7 @@ function httpRequestJson($url, $data){
 $mysqli = new mysqli('222.73.184.169', 'chenzhijie', 'chenzhijie', 'demo', '63306');
 if(isset($_GET['ticket'])){
     //@ticket 登录后需要验证ticket
-    $keys = array('game_key','timestamp','nonce','login_type','ticket','signature');
+    $keys = array('game_key','timestamp','nonce','login_type','ticket','game_url','signature');
     foreach($keys as $key){
         $getData[$key] = $_GET[$key];
     }
