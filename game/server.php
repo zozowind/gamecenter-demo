@@ -119,6 +119,7 @@ if(isset($_GET['action'])){
         case 'confirm':
             //检查签名
             $data = array(
+                'game_key' => $_POST['game_key'],
                 'game_orderno' => $_POST['game_orderno'],
                 'orderno' => $_POST['orderno'],
                 'subject' => $_POST['subject'],
