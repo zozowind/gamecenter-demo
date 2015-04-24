@@ -6,12 +6,14 @@
     var hGame = function(config){
         var _self = this;
         this.game_key = config.game_key;
-        this.hGameDomain = 'http://dev1.h5.gamexhb.com';  //填写实际的游戏服务器地址
+        this.hGameDomain = 'http://gc.dev.gc.hgame.com';  //填写实际的游戏服务器地址
         this.mWindow = config.messageWindow?config.messageWindow:window.top;
+        this.sdkPath = parent != top ? "0" : "";
+        this.sendMessage({"action":'path', "data": this.sdkPath}, this.hGameDomain);
         //添加消息监听
         window.addEventListener('message', function(event){
             _self.messageHandler(event.data);
-        }, false)
+        }, false);
     };
 
     /**
