@@ -4,6 +4,8 @@
     define('APPKEY_ID', 'sdk_test_key');
     define('SECRET_KEY', 'sdk_test_secret');
 
+    $payConfirmUrl = 'http://pay.dev.gc.hgame.com/pay/apple/notify';
+
     /**
      * 生成随机数方法
      * @param $n int 随机数位置
@@ -69,6 +71,18 @@
                 ));
             }
             */
+            exit;
+            break;
+
+        case 'applePayConfirm':
+            $data = array(
+                "receipt_data" => $_POST['receipt_data'],
+                "open_id" => $_POST['open_id'],
+                "orderno" => $_POST['orderno'],
+            );
+
+            $result = httpRequestJson($payConfirmUrl, signTheData($requestData,SECRET_KEY));
+            return $result;
             exit;
             break;
 
@@ -206,5 +220,23 @@
             $result = false;
         }
         $mysqli->close();
+        return $result;
+    }
+
+    /**
+    * post获取接口
+    * @param $url string ticket接口地址
+    * @return mixed
+    */
+    function httpRequestJson($url, $data){
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL,$url);
+        //curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        //curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_POST,1);
+        curl_setopt($ch,CURLOPT_POSTFIELDS, $data);
+        $result = curl_exec($ch);
+        curl_close($ch);
         return $result;
     }
