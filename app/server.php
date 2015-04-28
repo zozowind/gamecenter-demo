@@ -4,7 +4,7 @@
     define('APPKEY_ID', 'sdk_test_key');
     define('SECRET_KEY', 'sdk_test_secret');
 
-    $payConfirmUrl = 'http://pay.dev.gc.hgame.com/pay/apple/notify';
+    $payConfirmUrl = 'https://pay.dev.gc.hgame.com/pay/apple/notify';
 
     /**
      * 生成随机数方法
@@ -81,7 +81,7 @@
                 "orderno" => $_POST['orderno'],
             );
 
-            $result = httpRequestJson($payConfirmUrl, signTheData($data,SECRET_KEY));
+            $result = httpRequestJson($payConfirmUrl, http_build_query(signTheData($data,SECRET_KEY)));
             echo $result;
             exit;
             break;
