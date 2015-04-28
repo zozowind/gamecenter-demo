@@ -81,7 +81,7 @@
                 "orderno" => $_POST['orderno'],
             );
 
-            $result = httpRequestJson($payConfirmUrl, signTheData($requestData,SECRET_KEY));
+            $result = httpRequestJson($payConfirmUrl, signTheData($data,SECRET_KEY));
             return $result;
             exit;
             break;
