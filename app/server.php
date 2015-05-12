@@ -164,13 +164,16 @@
         if ($user === false) {
             $result = array(
                 'code' => '-1',
-                'message' => '用户不存在'
+                'message' => '用户不存在',
+                'data' => array()
             );
         } else {
             $result = array(
                 'code' => '0',
                 'message' => '成功',
-                'app_user_id' => $user['username'],
+                'data' => array(
+                    'app_user_id' => $user['username'],
+                )
             );
         }
         /*
