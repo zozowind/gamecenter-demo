@@ -1,0 +1,8 @@
+upload.exclude
+.DS_Store
+.buildpath
+.project
+.settings
+.git*
+.svn
+.idea

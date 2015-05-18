@@ -38,6 +38,10 @@
         return $data;
     }
 
+    if(!isset($_GET['action'])){
+        echo checkTicket($_GET['ticket']);
+        exit;
+    }
 
     switch ($_GET['action']) {      //模拟路由
         case 'login':               //用户登录

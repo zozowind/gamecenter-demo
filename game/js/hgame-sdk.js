@@ -6,7 +6,7 @@
     var hGame = function(config){
         var _self = this;
         this.game_key = config.game_key;
-        this.hGameDomain = 'http://gc.dev.gc.hgame.com';  //填写实际的游戏服务器地址
+        this.hGameDomain = 'http://gc.czj.u1.hgame.com';  //填写实际的游戏服务器地址
         this.mWindow = config.messageWindow?config.messageWindow:window.top;
         this.sdkPath = parent != top ? "0" : "";
         this.sendMessage({"action":'path', "data": this.sdkPath}, this.hGameDomain);
@@ -54,22 +54,6 @@
         },
 
         /**
-         * 游戏内上报游戏成绩到排行榜接口
-         * @param int score 游戏成绩
-         */
-        scoreReport: function(score, callback){
-            var message = {
-                "action": 'scoreReport',
-                "data": {
-                    "game_key": this.game_key,
-                    "score": score
-                }
-            };
-            this.sendMessage(message, this.hGameDomain);
-            this.afterScoreReport = callback;
-        },
-
-        /**
          * 消息发送方法
          * @param message 消息体
          * @param hGameDomain 发送对象域名
@@ -92,20 +76,20 @@
             if(typeof message == 'object'){
                 switch(message.action){
                     case 'share':
-                        this.shareCallback(message.content);
+                        this.shareCallback(message.data);
                         break;
                     case 'pay':
-                        this.payCallback(message.content);
+                        this.payCallback(message.data);
                         break;
-                    case 'scoreReport':
-                        this.scoreReportCallback(message.content);
+                    case 'gameReport':
+                        this.gameReportCallback(message.data);
                         break;
                     default:
                         break;
                 }
             }else{
                 //报错
-                alert('消息体格式不正确');
+                console.log('消息体格式不正确');
             }
         },
 
@@ -118,7 +102,6 @@
             }
         },
 
-
         /**
          * 游戏内支付完成后的回调接口
          */
@@ -129,12 +112,34 @@
         },
 
         /**
+         * 游戏内上报接口
+         * @param action 上报动作类型（具体类型设置，基础数据，扩展数据字段见文档）
+         * @param baseData 基础数据
+         * @param extendData 扩展数据
+         * @param callback 回调方法
+         */
+        gameReport: function(action, baseData, extendData, callback){
+            baseData.game_key =  this.game_key;
+            var message = {
+                "action": 'gameReport',
+                "data": {
+                    "action": action,
+                    "baseData": baseData,
+                    "extendData": extendData
+                }
+            };
+            this.sendMessage(message, this.hGameDomain);
+            this.afterGameReport = callback;
+
+        },
+
+        /**
          * 游戏内上报
          * @param data
          */
-        scoreReportCallback: function(data){
-            if(this.afterScoreReport!=undefined){
-                this.afterScoreReport(data);
+        gameReportCallback: function(data){
+            if(this.afterGameReport!=undefined){
+                this.afterGameReport(data);
             }
 
         }
